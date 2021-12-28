@@ -85,9 +85,18 @@
                 </li>
                 @if($pengajuanKp->status == "PENGAJUAN")
                 <li class="list-group-item d-flex justify-content-center align-items-start">
-                    <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITERIMA"]) }}" class="btn btn-success rounded-0">Terima Pengajuan</a>
-                    <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITOLAK"]) }}" class="btn btn-outline-danger rounded-0">Tolak</a>
-                    <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITERIMA DENGAN SYARAT"]) }}" class="btn btn-outline-warning rounded-0">Terima dengan syarat</a>
+                    <form method="post" action="{{ route('kaprodi.pengajuan.kp.review', ["id" => $pengajuanKp->id]) }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="status" value="DITERIMA DENGAN SYARAT">
+                        <input type="hidden" name="pengajuankp_id" value="{{$pengajuanKp->id}}">
+                        <textarea name="review" id="review"
+                                  class="form-control {{ $errors->has('review') ? ' is-invalid' : '' }}"
+                        ></textarea>
+                        <br>
+                        <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITERIMA"]) }}" class="btn btn-success rounded-0">Terima Pengajuan</a>
+                        <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITOLAK"]) }}" class="btn btn-outline-danger rounded-0">Tolak</a>
+                        <button class="btn btn-outline-warning rounded-0">Terima dengan syarat</button>
+                    </form>
                 </li>
                 @endif
             </ol>

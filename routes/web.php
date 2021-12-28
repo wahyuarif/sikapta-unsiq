@@ -86,6 +86,7 @@ Route::group(["prefix" => "kaprodi", "as" => "kaprodi.", "namespace" => "Kaprodi
         Route::get("/", "PengajuanKPController@index")->name("index");
         Route::get("/detail/{id}", "PengajuanKPController@detail")->name("detail");
         Route::get("/terima/{id}/{status}", "PengajuanKPController@terima")->name("terima");
+        Route::post("/review/{id}", "PengajuanKPController@review")->name("review");
         Route::post("/pilih-dosbing", "PengajuanKPController@pilihDosbing")->name("pilih-dosbing");
     });
 
@@ -109,6 +110,12 @@ Route::group(["prefix" => "kaprodi", "as" => "kaprodi.", "namespace" => "Kaprodi
         Route::get("/", "TugasAkhirController@index")->name("index");
         Route::get("/selesai/{id}", "TugasAkhirController@selesai")->name("selesai");
     });
+
+    //review Kp
+    Route::group(["prefix" => "review-kp", "as" => "review.kp."], function (){
+        Route::post("/", "ReviewKPController@save")->name("save");
+    });
+
 
 });
 
