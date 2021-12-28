@@ -20,5 +20,10 @@ class PengajuanKP extends Model
     {
         return $this->belongsTo(Mahasiswa::class,"nim", "nim");
     }
+
+    public function review()
+    {
+        return $this->hasMany(ReviewKP::class,"pengajuankp_id", "id");
+    }
 }
 

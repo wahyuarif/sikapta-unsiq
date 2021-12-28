@@ -78,6 +78,10 @@
                 @endisset
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
+                        <div class="font-weight-bold">Review</div>
+                        @foreach($pengajuanKp->review as $item)
+                            <p>{{$item->review}} - {{$item->updated_at}}</p>
+                        @endforeach
                         <div class="font-weight-bold">Status Pengajuan</div>
                         <span class="badge badge-warning">{{ $pengajuanKp->status }}</span>
                     </div>
