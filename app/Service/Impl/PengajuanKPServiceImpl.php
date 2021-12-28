@@ -42,7 +42,7 @@ class PengajuanKPServiceImpl implements PengajuanKPService
             $pengajuanKP = new PengajuanKP();
             $pengajuanKP->id = "KP-" . strtoupper(str_random(5));
             $pengajuanKP->nim = $mahasiswa->nim;
-            $pengajuanKP->nip = $dosen->nip;
+            $pengajuanKP->nip = null; //$dosen->nip;
             $pengajuanKP->judul = $request->judul;
             $pengajuanKP->lokasi = $request->lokasi;
             $pengajuanKP->alamat = $request->alamat;
