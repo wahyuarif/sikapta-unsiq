@@ -32,7 +32,7 @@ class PengajuanKPServiceImpl implements PengajuanKPService
         $this->validasiPengajuan($request);
 
         $mahasiswa = $this->sessionService->currentMahasiswa();
-        // $dosen = Dosen::where("kode_prodi", $mahasiswa->kode_prodi)->where("jabatan", "kaprodi")->first();
+        $dosen = Dosen::where("kode_prodi", $mahasiswa->kode_prodi)->where("jabatan", "kaprodi")->first();
 
         try {
             DB::beginTransaction();
@@ -42,7 +42,7 @@ class PengajuanKPServiceImpl implements PengajuanKPService
             $pengajuanKP = new PengajuanKP();
             $pengajuanKP->id = "KP-" . strtoupper(str_random(5));
             $pengajuanKP->nim = $mahasiswa->nim;
-            $pengajuanKP->nip = null; // $dosen->nip;
+            $pengajuanKP->nip = $dosen->nip;
             $pengajuanKP->judul = $request->judul;
             $pengajuanKP->lokasi = $request->lokasi;
             $pengajuanKP->alamat = $request->alamat;
