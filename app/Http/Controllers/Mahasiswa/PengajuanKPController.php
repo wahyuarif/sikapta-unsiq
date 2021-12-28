@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Exceptions\PengajuanKPException;
 use App\Http\Requests\PengajuanKPRequest;
+use App\Model\Dosen;
 use App\Model\PengajuanKP;
 use App\Service\Impl\PengajuanKPServiceImpl;
 use App\Service\Impl\SessionServiceImpl;
@@ -71,11 +72,16 @@ class PengajuanKPController extends Controller
         $bulan = $array_bulan[date('n')];
         $tahun = date('Y');
         $mahasiswa = $this->sessionService->currentMahasiswa();
+        $pengajuanKp = PengajuanKP::where('nim', $mahasiswa->nim)
+                                    ->where('status', 'DITERIMA')
+                                    ->firstOrFail();
+        $dosen = Dosen::where("nip", $pengajuanKp->nip)->firstOrFail();
         return view('mahasiswa.pengajuan-kp.surat-tugas', [
            "title" => "Surat Tugas",
            "mahasiswa" => $mahasiswa,
            "tahun"     => $tahun,
            "bulan"     => $bulan,
+            "dosen" => $dosen
         ]);
     }
 }

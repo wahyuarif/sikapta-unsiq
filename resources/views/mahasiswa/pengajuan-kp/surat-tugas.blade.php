@@ -38,7 +38,7 @@
         <tr>
             <td>Nama &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>:</td>
-            <td><strong>Nasyiin Faqih, S.T.,M.T.</strong></td>
+            <td><strong>{{$dosen->nama}}</strong></td>
         </tr>
     </table>
     <p class="text-left mt-4">
