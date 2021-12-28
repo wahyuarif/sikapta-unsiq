@@ -37,7 +37,7 @@
                                 @if($value->status == "PENGAJUAN")
                                     <a href="" class="btn btn-sm btn-primary"> Edit</a>
                                 @elseif($value->status == "DITOLAK")
-                                    <a href="" class="btn btn-sm btn-warning"> Pengajuan Ulang</a>
+                                    <a href="{{route('mahasiswa.pengajuan.kp.pengajuan')}}" class="btn btn-sm btn-warning"> Pengajuan Ulang</a>
                                 @endif
 
                             </td>

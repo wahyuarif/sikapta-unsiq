@@ -19,7 +19,7 @@ class CreatePengajuankpTable extends Migration
             $table->foreign("nim")
                 ->references("nim")
                 ->on("mahasiswa");
-            $table->string("nip");
+            $table->string("nip")->nullable();
             $table->foreign("nip")
                 ->references("nip")
                 ->on("dosen");
