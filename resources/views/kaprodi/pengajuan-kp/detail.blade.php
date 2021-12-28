@@ -85,9 +85,9 @@
                 </li>
                 @if($pengajuanKp->status == "PENGAJUAN")
                 <li class="list-group-item d-flex justify-content-center align-items-start">
-                    <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id]) }}" class="btn btn-success rounded-0">Terima Pengajuan</a>
-                    <a class="btn btn-outline-danger rounded-0">Tolak</a>
-                    <a class="btn btn-outline-warning rounded-0">Terima dengan syarat</a>
+                    <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITERIMA"]) }}" class="btn btn-success rounded-0">Terima Pengajuan</a>
+                    <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITOLAK"]) }}" class="btn btn-outline-danger rounded-0">Tolak</a>
+                    <a href="{{ route('kaprodi.pengajuan.kp.terima', ["id" => $pengajuanKp->id, "status" => "DITERIMA DENGAN SYARAT"]) }}" class="btn btn-outline-warning rounded-0">Terima dengan syarat</a>
                 </li>
                 @endif
             </ol>

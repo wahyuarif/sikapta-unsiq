@@ -103,7 +103,7 @@ class PengajuanKPServiceImpl implements PengajuanKPService
         return $namaFile;
     }
 
-    public function terima(string $id): PengajuanKPResponse
+    public function terima(string $id, string $status): PengajuanKPResponse
     {
         $this->validariIdPengajuan($id);
 
@@ -112,7 +112,7 @@ class PengajuanKPServiceImpl implements PengajuanKPService
         try {
             DB::beginTransaction();
 
-            $pengajuanKP->update(["status" => "DITERIMA"]);
+            $pengajuanKP->update(["status" => $status]);
 
             DB::commit();
         }catch (\Exception $exception){

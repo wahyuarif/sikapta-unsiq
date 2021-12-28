@@ -85,7 +85,7 @@ Route::group(["prefix" => "kaprodi", "as" => "kaprodi.", "namespace" => "Kaprodi
     Route::group(["prefix" => "pengajuan-kp", "as" => "pengajuan.kp."], function (){
         Route::get("/", "PengajuanKPController@index")->name("index");
         Route::get("/detail/{id}", "PengajuanKPController@detail")->name("detail");
-        Route::get("/terima/{id}", "PengajuanKPController@terima")->name("terima");
+        Route::get("/terima/{id}/{status}", "PengajuanKPController@terima")->name("terima");
         Route::post("/pilih-dosbing", "PengajuanKPController@pilihDosbing")->name("pilih-dosbing");
     });
 

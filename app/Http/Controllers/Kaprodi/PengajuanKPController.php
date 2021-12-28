@@ -55,10 +55,10 @@ class PengajuanKPController extends Controller
         ]);
     }
 
-    public function terima($id)
+    public function terima($id, $status)
     {
         try {
-            $this->pengajuanKPService->terima($id);
+            $this->pengajuanKPService->terima($id, $status);
             return back()->with("success", "Pengajuan diterima");
         }catch (PengajuanKPException $exception){
             return back()->with("error", $exception->getMessage());
