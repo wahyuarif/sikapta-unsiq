@@ -24,9 +24,6 @@ class CreateReviewTable extends Migration
             $table->text('review');
             $table->timestamps();
         });
-        $table->foreign("user_id")
-        ->references("id")
-        ->on("user");
     }
 
     /**

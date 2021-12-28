@@ -46,6 +46,18 @@ class PengajuanKPController extends Controller
         ]);
     }
 
+    public function edit($id){
+
+    $pengajuanKp = PengajuanKP::find($id);
+    return view('books.edit')->with(compact('book'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        
+    }
+
     public function postPengajuan(PengajuanKPRequest $request)
     {
         try {
