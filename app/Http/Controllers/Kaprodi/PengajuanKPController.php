@@ -29,7 +29,7 @@ class PengajuanKPController extends Controller
 
         $pengajuanKp = PengajuanKP::whereHas("dosen", function ($query){
             $dosen = $this->sessionService->currentDosen();
-            return $query->where("kode_prodi", "=",$dosen->kode_prodi);
+            return $query; // ->where("kode_prodi", "=",$dosen->kode_prodi);
         })->where("status", "PENGAJUAN")
             ->get();
 
