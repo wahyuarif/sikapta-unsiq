@@ -82,12 +82,14 @@
                         <span class="badge badge-warning">{{ $pengajuanKp->status }}</span>
                     </div>
                 </li>
+                @isset($pengajuanKp->dosen->nama)
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="font-weight-bold">Cetak Surat Tugas</div>
                         <a href="{{ route('mahasiswa.pengajuan.kp.surat-tugas') }}" class="btn btn-sm btn-info">Cetak</a>
                     </div>
                 </li>
+                @endisset
             </ol>
         </div>
     </div>
