@@ -28,7 +28,7 @@
 
 <div class="container text-center pt-5 px-5">
     <h4><u>SURAT TUGAS PEMBIMBING KERJA PRAKTEK</u></h4>
-    <h6><u>No. 152/FASTIKOM-UNSIQ/III/2018</u></h6>
+    <h6><u>No....../FASTIKOM-UNSIQ/{{ $bulan }}/{{$tahun}}</u></h6>
 
     <p class="text-left mt-5"><strong>Assalamu’alaikum Wr. Wb.</strong></p>
     <p class="text-left">
