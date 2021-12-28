@@ -10,4 +10,10 @@ class Pembayaran extends Model
     protected $fillable = ["id", "jenis_pengajuan", "bukti_pembayaran", "tanggal_bayar","nim", "status_pembayaran" ];
     protected $keyType = "string";
     public $incrementing = false;
+
+    public function mahasiswa(){
+        return $this->belongsToMany(Mahasiswa::class,"pembayaran_mahasiswa");
+    }
+
 }
+

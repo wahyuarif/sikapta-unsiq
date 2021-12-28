@@ -1,12 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <!-- DataTales Example -->
     <div class="card shadow-sm mt-4">
         <div class="card-header py-3">

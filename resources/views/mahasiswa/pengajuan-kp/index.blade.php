@@ -2,11 +2,6 @@
 
 @section('content')
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="card shadow-sm mb-4">
@@ -28,22 +23,37 @@
                             <th scope="row">{{ $value->id }}</th>
                             <td>{{ $value->judul }}</td>
                             <td>{{ $value->created_at }}</td>
-                            <td><span class="badge badge-warning">{{ $value->status }}</span></td>
+                            @if($value->selesai)
+                                <td><span class="badge badge-success">Selesai</span></td>
+                            @else
+                                <td><span class="badge badge-warning">{{ $value->status }}</span></td>
+                            @endif
+
                             <td>
-                                <a href="" class="btn btn-sm btn-outline-primary"> Detail</a>
+                                 <a href="{{ route('mahasiswa.pengajuan.kp.detail', ['id' => $value->id]) }}" class="btn btn-sm btn-outline-primary"> Detail</a>
+                                @if($value->selesai)
+                                    <a href="{{ route('mahasiswa.laporan.upload-kp') }}" class="btn btn-sm btn-primary"> Upload Laporan</a>
+                                @endif
                                 @if($value->status == "PENGAJUAN")
                                     <a href="" class="btn btn-sm btn-primary"> Edit</a>
                                 @elseif($value->status == "DITOLAK")
                                     <a href="" class="btn btn-sm btn-warning"> Pengajuan Ulang</a>
-                                @elseif($value->status == "DITERIMA")
-                                    <a href="" class="btn btn-sm btn-primary"> Bimbingan</a>
                                 @endif
+
                             </td>
                         </tr>
+
+                        @if($value->status == "DITERIMA")
                         <tr>
                             <th colspan="3"> Dosen Pembimbing: {{ $value->dosen->nama }}</th>
                             <td colspan="2">Masa Belaku : {{ $value->created_at }}</td>
                         </tr>
+                        <tr>
+                            <td colspan="5">
+                                <a href="{{ route('mahasiswa.pengajuan.kp.surat-tugas') }}" class="btn btn-sm btn-info">Cetak Surat Tugas</a>
+                            </td>
+                        </tr>
+                        @endif
                         @endforeach
                         </tbody>
                     </table>

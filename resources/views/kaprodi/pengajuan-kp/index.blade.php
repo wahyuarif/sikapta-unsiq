@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.kaprodi')
 
 @section('content')
 
@@ -30,7 +30,6 @@
                                     <td><span class="badge badge-warning">{{ $value->status }}</span></td>
                                     <td>
                                         <a href="{{ route("kaprodi.pengajuan.kp.detail", ["id" => $value->id]) }}" class="btn btn-sm btn-outline-primary"> Detail</a>
-                                        <a href="" class="btn btn-sm btn-primary"> Edit</a>
                                     </td>
                                 </tr>
                                 <tr>

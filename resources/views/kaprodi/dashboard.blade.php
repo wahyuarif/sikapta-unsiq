@@ -1,4 +1,4 @@
-@extends("layouts.dosen")
+@extends("layouts.kaprodi")
 
 @section("content")
 

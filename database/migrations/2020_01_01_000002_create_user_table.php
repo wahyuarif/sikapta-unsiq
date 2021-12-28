@@ -17,7 +17,7 @@ class CreateUserTable extends Migration
             $table->string('id')->primary();
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum("role", ["admin", "kaprodi", "dosen", "mahasiswa"]);
+            $table->enum("role", ["admin", "kaprodi", "dosen", "mahasiswa", "kta"]);
             $table->timestamps();
         });
     }

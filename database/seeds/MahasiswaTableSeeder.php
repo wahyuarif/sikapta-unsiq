@@ -16,8 +16,8 @@ class MahasiswaTableSeeder extends Seeder
         $mahasiswa = new Mahasiswa();
         $mahasiswa->truncate();
 
-        $mahasiswa->nim = "2019150080";
-        $mahasiswa->nama = "Ahmad Rifai";
+        $mahasiswa->nim = "2015150128";
+        $mahasiswa->nama = "Wahyu Arif Kurniawan";
         $mahasiswa->kode_prodi = "TI";
         $mahasiswa->save();
 

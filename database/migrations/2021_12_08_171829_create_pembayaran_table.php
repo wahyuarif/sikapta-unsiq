@@ -18,8 +18,10 @@ class CreatePembayaranTable extends Migration
             $table->foreign('nim')
                 ->references('nim')
                 ->on('mahasiswa');
-            $table->enum('status_pembayaran', ["AKTIF", "NONAKTIF"]); //non-aktif atau aktif
+            $table->enum('status_pembayaran', ["AKTIF","NONAKTIF", "PROSES"])->default("PROSES"); //non-aktif atau aktif
             $table->timestamps();
+            $table->date('masa_berlaku')->default(DB::raw('NOW()'));
+
         });
     }
 

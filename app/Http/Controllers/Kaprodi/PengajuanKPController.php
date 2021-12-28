@@ -27,9 +27,11 @@ class PengajuanKPController extends Controller
     public function index()
     {
 
-        $nip = $this->sessionService->currentDosen()->nip;
-
-        $pengajuanKp = PengajuanKP::where("nip", $nip)->get();
+        $pengajuanKp = PengajuanKP::whereHas("dosen", function ($query){
+            $dosen = $this->sessionService->currentDosen();
+            return $query->where("kode_prodi", "=",$dosen->kode_prodi);
+        })->where("status", "PENGAJUAN")
+            ->get();
 
         return view("kaprodi.pengajuan-kp.index",[
             "title" => "Pengajuan Kerja Praktek ",
@@ -40,8 +42,6 @@ class PengajuanKPController extends Controller
     public function detail(string $id)
     {
         $prodiId = $this->sessionService->currentDosen()->kode_prodi;
-
-
         $pengajuanKp =PengajuanKP::find($id);
         $dosen = Dosen::all();
         return view("kaprodi.pengajuan-kp.detail", [
@@ -63,7 +63,6 @@ class PengajuanKPController extends Controller
 
     public function pilihDosbing(PengajuanKPPilihDosenRequest $request)
     {
-
         try {
             $this->pengajuanKPService->pilihDosbing($request);
             return back()->with("success", "Berhasil membilih dosen pembimbing");

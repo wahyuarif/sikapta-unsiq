@@ -53,8 +53,6 @@ class PengajuanKPServiceImpl implements PengajuanKPService
             $pengajuanKP->kerangka_pikir = $kerangkaPikir;
             $pengajuanKP->save();
 
-
-
             DB::commit();
         }catch (PengajuanKPException $exception){
             DB::rollback();
@@ -152,6 +150,30 @@ class PengajuanKPServiceImpl implements PengajuanKPService
 
 
         $pengajuanKP = PengajuanKP::find($request->id);
+
+        $response = new PengajuanKPResponse();
+        $response->pengajuanKP = $pengajuanKP;
+
+        return $response;
+    }
+
+    public function selesai(string $id): PengajuanKPResponse
+    {
+        $this->validariIdPengajuan($id);
+
+        $pengajuanKP = PengajuanKP::find($id);
+
+        try {
+            DB::beginTransaction();
+
+            $pengajuanKP->update(["selesai" => 1]);
+
+            DB::commit();
+        }catch (\Exception $exception){
+            DB::rollback();
+            echo $exception->getMessage();
+        }
+
 
         $response = new PengajuanKPResponse();
         $response->pengajuanKP = $pengajuanKP;

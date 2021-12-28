@@ -55,4 +55,22 @@ class PengajuanKPController extends Controller
             return back()->with("error", $exception->getMessage())->withInput($request->all());
         }
     }
+
+    public function detail(string $id)
+    {
+        $pengajuanKp = PengajuanKP::find($id);
+        return view("mahasiswa.pengajuan-kp.detail", [
+            "title" => "Detail pengajuan KP",
+            "pengajuanKp" => $pengajuanKp,
+        ]);
+    }
+
+    public function suratTugas()
+    {
+        $mahasiswa = $this->sessionService->currentMahasiswa();
+        return view('mahasiswa.pengajuan-kp.surat-tugas', [
+           "title" => "Surat Tugas",
+           "mahasiswa" => $mahasiswa
+        ]);
+    }
 }

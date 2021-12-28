@@ -1,24 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-            @endforeach
-        </div>
-    @endif
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="row mt-3">
         <div class="col-md-10">
             <div class="card shadow-sm mb-4">

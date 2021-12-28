@@ -38,6 +38,13 @@ Route::group(["prefix" => "admin", "as" => "admin.", "namespace" => "Admin", "mi
         Route::get("/", "SKSController@index")->name("index");
         Route::post("/import-excel", "SKSController@importExcel")->name("post.import.excel");
     });
+    //pembayaran
+    Route::group(["prefix" => "pembayaran", "as" => "pembayaran."], function (){
+        Route::get("/pembayaran-kp", "PembayaranController@pembayaranKP")->name("kp.index");
+        Route::get("/pembayaran-ta", "PembayaranController@pembayaranTA")->name("ta.index");
+        Route::get("/konfirmasi-pembayaran/{id}", "PembayaranController@konfirmasiPembayaran")->name("konfirmasi-pembayaran");
+    });
+
 });
 
 // Mahasiswa
@@ -53,6 +60,20 @@ Route::group(["prefix" => "mahasiswa", "as" => "mahasiswa.","namespace" => "Maha
         Route::get("/", "PengajuanKPController@index")->name("index");
         Route::get("/pengajuan", "PengajuanKPController@pengajuan")->name("pengajuan");
         Route::post("/pengajuan", "PengajuanKPController@postPengajuan")->name("post.pengajuan");
+        Route::get("/detail/{id}", "PengajuanKPController@detail")->name("detail");
+        Route::get("/surat-tugas", "PengajuanKPController@suratTugas")->name("surat-tugas");
+    });
+    //pengajuan TA
+    Route::group(["prefix" => "pengajuan-ta", "as" => "pengajuan.ta."], function (){
+        Route::get("/", "PengajuanTAController@index")->name("index");
+        Route::get("/pengajuan", "PengajuanTAController@pengajuan")->name("pengajuan");
+        Route::post("/pengajuan", "PengajuanTAController@postPengajuan")->name("post.pengajuan");
+    });
+    // Laporan
+    Route::group(["prefix" => "laporan", "as" => "laporan."], function (){
+        Route::get("/", "LaporanController@kerjaPraktek")->name("kerja-praktek");
+        Route::get("/upload", "LaporanController@uploadKP")->name("upload-kp");
+        Route::post("/laporan", "LaporanController@postUploadKP")->name("post.upload-kp");
     });
 });
 
@@ -67,12 +88,46 @@ Route::group(["prefix" => "kaprodi", "as" => "kaprodi.", "namespace" => "Kaprodi
         Route::get("/terima/{id}", "PengajuanKPController@terima")->name("terima");
         Route::post("/pilih-dosbing", "PengajuanKPController@pilihDosbing")->name("pilih-dosbing");
     });
+
+    //pengajuan TA
+    Route::group(["prefix" => "pengajuan-ta", "as" => "pengajuan.ta."], function (){
+        Route::get("/", "PengajuanTAController@index")->name("index");
+        Route::get("/detail/{id}", "PengajuanTAController@detail")->name("detail");
+        Route::get("/terima/{id}", "PengajuanTAController@terima")->name("terima");
+
+    });
+
+    // Kerja Praktek
+    Route::group(["prefix" => "kerja-praktek", "as" => "kerja-praktek."], function (){
+        Route::get("/", "KerjaPraktekController@index")->name("index");
+        Route::get("/selesai/{id}", "KerjaPraktekController@selesai")->name("selesai");
+    });
+
+
+    // Tugas Akhir
+    Route::group(["prefix" => "tugas-akhir", "as" => "tugas-akhir."], function (){
+        Route::get("/", "TugasAkhirController@index")->name("index");
+        Route::get("/selesai/{id}", "TugasAkhirController@selesai")->name("selesai");
+    });
+
 });
 
 // Dosen
 Route::group(["prefix" => "dosen", "as" => "dosen.", "namespace" => "Dosen"], function (){
     //
     Route::get("/dashboard", "HomeController@dashboard")->name("dashboard");
+
+    // Kerja Praktek
+    Route::group(["prefix" => "kerja-praktek", "as" => "kerja-praktek."], function (){
+        Route::get("/", "KerjaPraktekController@index")->name("index");
+        Route::get("/selesai/{id}", "KerjaPraktekController@selesai")->name("selesai");
+    });
+
+    // Tugas Akhir
+    Route::group(["prefix" => "tugas-akhir", "as" => "tugas-akhir."], function (){
+        Route::get("/", "TugasAkhirController@index")->name("index");
+        Route::get("/selesai/{id}", "TugasAkhirController@selesai")->name("selesai");
+    });
 
 });
 

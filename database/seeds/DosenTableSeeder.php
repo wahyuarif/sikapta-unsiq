@@ -21,5 +21,13 @@ class DosenTableSeeder extends Seeder
         $dosen->jabatan = "kaprodi";
 
         $dosen->save();
+
+        $dosen2 = new \App\Model\Dosen();
+        $dosen2->nip = "3325051607010002";
+        $dosen2->nama = "Nahar Mardiyantoro";
+        $dosen2->kode_prodi = "TI";
+        $dosen2->status = "aktif";
+        $dosen2->jabatan = "dosen";
+        $dosen->save();
     }
 }

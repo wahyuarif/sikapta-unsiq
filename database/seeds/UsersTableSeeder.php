@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
         $mahasiswa->password = \Illuminate\Support\Facades\Hash::make("password");
         $mahasiswa->role = "mahasiswa";
         $mahasiswa->save();
+
         // dosen user
         $dosen = new User();
         $dosen->id = uniqid("user-");
@@ -42,9 +43,9 @@ class UsersTableSeeder extends Seeder
 
         $admin = new \App\Model\Admin();
         $admin->id = uniqid();
-        $admin->nama = "Ahmad Rifai";
-        $admin->nomer_hp = "085548558449";
-        $admin->alamat = "Rejosari";
+        $admin->nama = "Wahyu Arif Kurniawan";
+        $admin->nomer_hp = "08562759112";
+        $admin->alamat = "Banjarnegara";
         $admin->jenis_kelamin = "L";
         $admin->user_id = $userAdmin->id;
         $admin->save();

@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
 
     <div class="alert alert-light" role="alert">
         <h4 class="alert-heading">Jika membutuhkan surat ijin survey silahkan download</h4>

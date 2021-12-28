@@ -15,5 +15,10 @@ class PengajuanKP extends Model
     {
         return $this->belongsTo(Dosen::class,"nip", "nip");
     }
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class,"nim", "nim");
+    }
 }
 

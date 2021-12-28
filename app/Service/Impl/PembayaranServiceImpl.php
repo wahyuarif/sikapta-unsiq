@@ -3,8 +3,10 @@
 namespace App\Service\Impl;
 
 use App\Exceptions\PembayaranException;
+use App\Http\Requests\KonfirmasiPembayaranRequest;
 use App\Http\Requests\PembayaranRequest;
 use App\Http\Response\PembayaranResponse;
+use App\Model\Mahasiswa;
 use App\Model\Pembayaran;
 use App\Service\PembayaranService;
 use App\Service\SessionService;
@@ -39,8 +41,10 @@ class PembayaranServiceImpl implements PembayaranService
             $pembayaran->jenis_pengajuan =  $request->jenis_pengajuan;
             $pembayaran->bukti_pembayaran = $buktiPembayaran;
             $pembayaran->nim = $mahasiswa->nim;
-            $pembayaran->status_pembayaran = "AKTIF";
+            $pembayaran->status_pembayaran = "PROSES";
             $pembayaran->save();
+
+//            $pembayaran->mahasiswa()->attach($mahasiswa);
 
             DB::commit();
         }catch (\Exception $exception){
@@ -84,4 +88,24 @@ class PembayaranServiceImpl implements PembayaranService
         return $namaFile;
     }
 
+    public function konfirmasiPembayaran(string $id): PembayaranResponse
+    {
+
+        $pembayaran = Pembayaran::find($id);
+
+        $date = $pembayaran->created_at;
+        date_add($date,date_interval_create_from_date_string("180 days"));
+        $masaBerlaku = date_format($date,"Y-m-d");
+
+        Pembayaran::where("id", $id)
+                ->update([
+                    "status_pembayaran" => "AKTIF",
+                    "masa_berlaku" => $masaBerlaku
+                ]);
+
+        $response = new PembayaranResponse();
+        $response->pembayaran = $pembayaran;
+        return $response;
+
+    }
 }

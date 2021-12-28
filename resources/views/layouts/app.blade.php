@@ -72,7 +72,7 @@
                 <div id="collapsePengajuan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ set_active('mahasiswa.pengajuan.kp.index') }}" href="{{ route('mahasiswa.pengajuan.kp.index') }}">Kerja Praktek</a>
-{{--                        <a class="collapse-item {{ set_active('pengajuanTA.formPengajuan')}}" href="{{route('pengajuanTA.formPengajuan')}}">Tugas Akhir</a>--}}
+                        <a class="collapse-item {{ set_active('mahasiswa.pengajuan.ta.index')}}" href="{{route('mahasiswa.pengajuan.ta.index')}}">Tugas Akhir</a>
                     </div>
                 </div>
             </li>
@@ -90,7 +90,23 @@
                     <i class="fas fa-money-bill-wave"></i>
                     <span>Pembayaran Pengajuan</span></a>
             </li>
+            <div class="sidebar-heading">
+                Laporan
+            </div>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLaporan"
+                   aria-expanded="true" aria-controls="collapsePengajuan">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Laporan</span>
+                </a>
+                <div id="collapseLaporan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ set_active('mahasiswa.laporan.kerja-praktek') }}" href="{{ route('mahasiswa.laporan.kerja-praktek') }}">Kerja Praktek</a>
+{{--                        <a class="collapse-item {{ set_active('mahasiswa.laporan.ta.index')}}" href="{{route('mahasiswa.pengajuan.ta.index')}}">Tugas Akhir</a>--}}
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -281,6 +297,24 @@
 
                     <h1 class="h3 mb-5 text-gray-800">{{ $title ?? '' }}</h1>
 
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}<br>
+                            @endforeach
+                        </div>
+                    @endif
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     @yield('content')
 
                 </div>

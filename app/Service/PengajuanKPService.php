@@ -12,4 +12,5 @@ interface PengajuanKPService
     public function pengajuan(PengajuanKPRequest $request): PengajuanKPResponse;
     public function terima(string $id) : PengajuanKPResponse;
     public function pilihDosbing(PengajuanKPPilihDosenRequest $request) : PengajuanKPResponse;
+    public function selesai(string $id): PengajuanKPResponse;
 }

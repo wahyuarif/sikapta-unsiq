@@ -85,10 +85,19 @@
                     <i class="fa fa-tools"></i>
                     <span>Settings SKS</span></a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengajuan"
+                   aria-expanded="true" aria-controls="collapsePengajuan">
                     <i class="fas fa-money-bill-wave"></i>
-                    <span>Transaksi</span></a>
+                    <span>Pembayaran</span>
+                </a>
+                <div id="collapsePengajuan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ set_active('admin.pembayaran.kp.index') }}" href="{{ route('admin.pembayaran.kp.index') }}">Pembayaran KP</a>
+                        <a class="collapse-item {{ set_active('admin.pembayaran.ta.index')}}" href="{{route('admin.pembayaran.ta.index')}}">Pembayaran TA</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -281,6 +290,26 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800">{{ $title ?? '' }}</h1>
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}<br>
+                            @endforeach
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+
                     @yield('content')
 
 
