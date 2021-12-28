@@ -27,11 +27,15 @@ class PengajuanKPController extends Controller
     public function index()
     {
 
-        $pengajuanKp = PengajuanKP::whereHas("dosen", function ($query){
-            $dosen = $this->sessionService->currentDosen();
-            return $query; // ->where("kode_prodi", "=",$dosen->kode_prodi);
-        })->where("status", "PENGAJUAN")
-            ->get();
+        if ('kaprodi') {
+            $pengajuanKp = PengajuanKP::get();
+        } else {
+            $pengajuanKp = PengajuanKP::whereHas("dosen", function ($query){
+                $dosen = $this->sessionService->currentDosen();
+                return $query->where("kode_prodi", "=",$dosen->kode_prodi);
+            })->where("status", "PENGAJUAN")
+                ->get();
+        }
 
         return view("kaprodi.pengajuan-kp.index",[
             "title" => "Pengajuan Kerja Praktek ",
