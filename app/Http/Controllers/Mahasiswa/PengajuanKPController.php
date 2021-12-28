@@ -67,10 +67,15 @@ class PengajuanKPController extends Controller
 
     public function suratTugas()
     {
+        $array_bulan = array(1=>"I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $bulan = $array_bulan[date('n')];
+        $tahun = date('Y');
         $mahasiswa = $this->sessionService->currentMahasiswa();
         return view('mahasiswa.pengajuan-kp.surat-tugas', [
            "title" => "Surat Tugas",
-           "mahasiswa" => $mahasiswa
+           "mahasiswa" => $mahasiswa,
+           "tahun"     => $tahun,
+           "bulan"     => $bulan,
         ]);
     }
 }

@@ -30,7 +30,7 @@ class CreatePengajuankpTable extends Migration
             $table->integer('jumlah_pegawai');
             $table->string('bidang_pekerjaan');
             $table->string('deskripsi_pekerjaan');
-            $table->enum('status', ['DITERIMA', 'DITOLAK', 'PENGAJUAN'])->default("PENGAJUAN");
+            $table->enum('status', ['DITERIMA', 'DITOLAK', 'PENGAJUAN', 'DITERIMA DENGAN SYARAT'])->default("PENGAJUAN");
             $table->boolean('selesai');
             $table->string('kerangka_pikir');
             $table->timestamps();
