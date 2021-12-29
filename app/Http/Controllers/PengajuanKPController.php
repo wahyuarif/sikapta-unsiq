@@ -227,6 +227,19 @@ class PengajuanKPController extends Controller
         return redirect(route('pengajuanKP'));
 
     }
+
+    
+    // public function getStatusBayar()
+    // {
+    //     $nim = Auth::user()->mahasiswa->nim;
+    //     $pembayaran = Pembayaran::where("status_pembayaran", "AKTIF")&&('mahasiswa_id', $id)->paginate(10);
+
+    //     return view("admin.pembayaran.index", [
+    //         "status" => "status",
+    //         "status" => $status_bayar
+    //     ]);
+    // }
+
     public function terimaSyarat(Request $request, $id)
     {
         $this->validate($request, [

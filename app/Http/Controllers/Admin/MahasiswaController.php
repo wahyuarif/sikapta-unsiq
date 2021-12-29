@@ -27,19 +27,20 @@ class MahasiswaController extends Controller
 
     public function index(Request $request)
     {
+        $q = $request->get('q');
         $prodi = Prodi::all();
-        $mahasiswa = Mahasiswa::paginate();
-
+        $mahasiswa = Mahasiswa::where('nama', 'LIKE','%'. $q.'%')->orderBy('nama')->paginate(5);
+        // return view('admin.mahasiswa.index', compact('categories'));
 
         return view("admin.mahasiswa.index", [
             "title" => "Mahasiswa",
             "prodi" => $prodi,
-            "mahasiswa" => $mahasiswa
+            "mahasiswa" => $mahasiswa,
+            compact($prodi, $mahasiswa)
         ]);
     }
 
-    public function tambah()
-    {
+    public function tambah(){
         $prodi = Prodi::all();
         return view("admin.mahasiswa.tambah", [
             "title" => "Tambah Data Mahasiswa",

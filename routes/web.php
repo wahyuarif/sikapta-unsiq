@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',"UserController@login")->name("login");
 
 // User
 Route::group(["prefix" => "user", "as" => "user."], function (){
@@ -37,6 +35,7 @@ Route::group(["prefix" => "admin", "as" => "admin.", "namespace" => "Admin", "mi
     Route::group(["prefix" => "sks", "as" => "sks."], function (){
         Route::get("/", "SKSController@index")->name("index");
         Route::post("/import-excel", "SKSController@importExcel")->name("post.import.excel");
+        Route::post("/export-excel", "SKSController@exportExcel")->name("post.export.excel");
     });
     //pembayaran
     Route::group(["prefix" => "pembayaran", "as" => "pembayaran."], function (){

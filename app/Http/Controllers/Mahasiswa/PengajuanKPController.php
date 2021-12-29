@@ -50,7 +50,7 @@ class PengajuanKPController extends Controller
     public function edit($id){
 
     $pengajuanKp = PengajuanKP::find($id);
-    return view('books.edit')->with(compact('book'));
+    // return view('pengajuan.edit')->with(compact('book'));
 
     }
 
@@ -76,6 +76,10 @@ class PengajuanKPController extends Controller
             "title" => "Detail pengajuan KP",
             "pengajuanKp" => $pengajuanKp,
         ]);
+    }
+
+    public function cekPembayaran() {
+
     }
 
     public function suratTugas()
