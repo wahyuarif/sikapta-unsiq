@@ -90,7 +90,7 @@
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="font-weight-bold">Surat Tugas</div>
-                        <a href="{{ route('mahasiswa.pengajuan.kp.surat-tugas') }}" class="btn btn-sm btn-info">Cetak Surat Tugas</a>
+                        <a href="{{ route('mahasiswa.pengajuan.kp.surat-tugas') }}" class="btn btn-sm btn-info">Cetak surat tugas</a>
                     </div>
                 </li>
                 @endisset

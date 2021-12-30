@@ -10,29 +10,32 @@
             <div class="row">
                 <div class="col-md-6">
                     <form method="get" action="{{ route("admin.mahasiswa.index") }}">
-                        <div class="form-group row">
-                            <label for="prodi" class="col-md-2 col-form-label">Prodi</label>
-                            <div class="col-md-5">
-                                <select name="prodi" class="form-control" id="prodi">
-                                    @foreach($prodi as $value)
-                                        <option value="{{ $value->kode_prodi }}">{{ $value->kode_prodi }} - {{ $value->prodi }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="form-row">
+                            {!! Form::open(['url' => 'admin/mahasiswa', 'method'=>'get', 'class'=>'form-inline']) !!}
+                                <div class="col-3 {!! $errors->has('q') ? 'has-error' : '' !!}">
+                                    {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Nama']) !!}
+                                    {!! $errors->first('q', '<p class="help-block">:message</p>') !!}
+                                </div>
+                                <div class="col-4 {!! $errors->has('status') ? 'has-error' : ''!!}">
+                                    {!! Form::select('status', [''=>'Semua status'], isset($status) ? $status : null, ['class'=>'form-control']) !!}
+                                    {!! $errors->first('status', '<p class="help-block">:message</p>')!!}
+                                </div>
+                            {!! Form::submit('Cari', ['class'=>'btn btn-primary']) !!}
+                            {!! Form::close() !!}
                         </div>
-                        <button class="btn mb-2 btn-success btn-sm col-form-label">Submit</button>
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <button type="button" class="btn float-right btn-sm btn-outline-success mx-2" data-toggle="modal" data-target="#impotrModal">
-                        Import Excel
-                    </button>
-                    <a href="" class="btn btn-success btn-sm float-right mx-2">Export Excel</a>
-                    <a href="{{ route("admin.mahasiswa.tambah") }}" class="btn btn-primary btn-sm float-right mx-2">Tambah Data</a>
+                    <div class="btn-group float-right">
+                        <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#importModal"><i class="far fa-file-excel"></i> Export</button>
+                        <button class="btn btn-outline-warning" type="button" data-toggle="modal" data-target=""><i class="far fa-file-excel"></i> Import</button>
+                        <a href="{{ route("admin.mahasiswa.tambah") }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+                    </div>
                 </div>
             </div>
+            <br>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>No</th>

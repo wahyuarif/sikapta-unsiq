@@ -13,14 +13,17 @@ class CreatePembayaranTable extends Migration
             $table->string('id')->primary();
             $table->enum('jenis_pengajuan', ["KP","TA"]);
             $table->string('bukti_pembayaran'); //files(img)
-            $table->date('tanggal_bayar')->default(DB::raw('NOW()'));
+            // $table->date('tanggal_bayar')->default(DB::raw('NOW()'));
+            $table->date('tanggal_bayar')->default(now());
             $table->string('nim');
             $table->foreign('nim')
                 ->references('nim')
                 ->on('mahasiswa');
             $table->enum('status_pembayaran', ["AKTIF","NONAKTIF", "PROSES"])->default("PROSES"); //non-aktif atau aktif
             $table->timestamps();
-            $table->date('masa_berlaku')->default(DB::raw('NOW()'));
+            // $table->date('masa_berlaku')->default(DB::raw('NOW()'));
+            $table->date('masa_berlaku')->default(now());
+
 
         });
     }

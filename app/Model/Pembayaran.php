@@ -16,4 +16,3 @@ class Pembayaran extends Model
     }
 
 }
-

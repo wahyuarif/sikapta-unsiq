@@ -10,20 +10,24 @@
     <!-- DataTales Example -->
     <div class="card shadow-sm mt-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Dosen</h6>
         </div>
-        <div class="card-body">
-            <div class="row mb-3">
+        <div class="card-body">  
+            <div class="row">
                 <div class="col-md-6">
-                    <a href="{{ route("admin.dosen.tambah") }}" class="btn btn-primary btn-sm mx-2">Tambah Data</a>
-                    <button type="button" class="btn btn-sm btn-success mx-2" data-toggle="modal" data-target="#impotrModal">
-                        Import Excel
-                    </button>
-                    <a href="" class="btn btn-outline-success btn-sm mx-2">Export Excel</a>
+                    {{-- only layout --}}
+                </div>
+                <div class="col-md-6">
+                    <div class="btn-group float-right">
+                        <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#importModal"><i class="far fa-file-excel"></i> Import</button>
+                        <button class="btn btn-outline-warning" type="button" data-toggle="modal" data-target=""><i class="far fa-file-excel"></i> Export</button>
+                        <a href="{{ route("admin.dosen.tambah") }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
+                    </div>
                 </div>
             </div>
+            <br>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>No</th>

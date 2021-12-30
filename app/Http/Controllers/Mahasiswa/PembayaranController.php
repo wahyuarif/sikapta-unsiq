@@ -34,5 +34,10 @@ class PembayaranController extends Controller
         }
 
     }
+    // public function statusPembayaran()
+    // {
+    //     $query = App\Model\Pembayaran::all()->where('nim', '2015150128')->add('status_pembayaran', 'Aktif');
+    //     return $query;
+    // }
 
 }

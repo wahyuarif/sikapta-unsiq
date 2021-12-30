@@ -34,7 +34,7 @@
                                 @if($value->selesai)
                                     <a href="{{ route('mahasiswa.laporan.upload-kp') }}" class="btn btn-sm btn-primary"> Upload Laporan</a>
                                 @endif
-                                @if($value->status == "PENGAJUAN")
+                                @if($value->status == "PENGAJUAN" or "DITERIMA DENGAN SYARAT")
                                     <a href="" class="btn btn-sm btn-primary"> Edit</a>
                                 @elseif($value->status == "DITOLAK")
                                     <a href="{{route('mahasiswa.pengajuan.kp.pengajuan')}}" class="btn btn-sm btn-warning"> Pengajuan Ulang</a>
@@ -50,7 +50,8 @@
                         </tr>
                         <tr>
                             <td colspan="5">
-                                <a href="{{ route('mahasiswa.pengajuan.kp.surat-tugas') }}" class="btn btn-sm btn-info">Cetak Surat Tugas</a>
+                                <a href="{{ route('mahasiswa.pembayaran.bayar')}}" class="btn btn-sm btn-info">Lanjut Pembayaran</a>
+                                {{-- <a href="{{ route('mahasiswa.pengajuan.kp.surat-tugas') }}" class="btn btn-sm btn-info">Cetak Surat Tugas</a> --}}
                             </td>
                         </tr>
                         @endif

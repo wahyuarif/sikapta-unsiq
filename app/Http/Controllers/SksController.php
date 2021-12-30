@@ -29,6 +29,8 @@ class SksController extends Controller
         return Excel::download(new SksExport, 'sks.xlsx');
     }
 
+    
+
     public function importExcel( Request $request ){
 
         Sks::truncate();
@@ -54,5 +56,6 @@ class SksController extends Controller
         return redirect()->back();
 
     }
+    
     
 }

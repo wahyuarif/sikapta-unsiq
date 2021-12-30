@@ -7,15 +7,21 @@
             <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
         </div>
         <div class="card-body">
-            <div class="row mb-2">
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-sm btn-success mx-2" data-toggle="modal" data-target="#impotrModal">
+        <div class="row">
+            <div class="col-md-6">
+                {{-- only layout --}}
+            </div>
+            <div class="col-md-6">
+                <div class="btn-group float-right">
+                    <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#impotrModal"><i class="far fa-file-excel"></i> 
                         Import Excel
                     </button>
                 </div>
             </div>
+        </div>
+        <br>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>No</th>
@@ -45,12 +51,12 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="impotrModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="impotrModal" tabindex="-1" aria-labelledby="import" aria-hidden="true">
         <div class="modal-dialog">
             <form action="{{ route("admin.sks.post.import.excel") }}" method="post" enctype="multipart/form-data">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="import">Import Data Mahasiswa</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
