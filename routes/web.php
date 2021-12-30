@@ -17,7 +17,7 @@ Route::group(["prefix" => "user", "as" => "user."], function (){
 // Admin
 Route::group(["prefix" => "admin", "as" => "admin.", "namespace" => "Admin", "middleware" => "admin"], function (){
     Route::get("/dashboard", "HomeController@dashboard")->name("dashboard");
-    //admin mahasiswa
+    //Menu mahasiswa
     Route::group(["prefix" => "mahasiswa", "as" => "mahasiswa."], function (){
         Route::get("/", "MahasiswaController@index")->name("index");
         Route::get("/tambah", "MahasiswaController@tambah")->name("tambah");

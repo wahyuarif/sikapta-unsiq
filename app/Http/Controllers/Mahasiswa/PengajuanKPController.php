@@ -47,12 +47,13 @@ class PengajuanKPController extends Controller
         ]);
     }
 
-    public function edit($id){
-
-    $pengajuanKp = PengajuanKP::find($id);
-    // return view('pengajuan.edit')->with(compact('book'));
-
+    public function edit($id)
+    {
+        $pengajuanKp = PengajuanKP::find($id);
+        return view('mahasiswa.pengajuan-kp.edit')->with(compact('pengajuanKp'));
     }
+
+    
 
     public function update(Request $request, $id)
     {

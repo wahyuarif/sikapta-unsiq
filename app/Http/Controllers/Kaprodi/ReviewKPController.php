@@ -7,6 +7,8 @@ use App\Model\PengajuanKP;
 use App\Service\Impl\ReviewKPServiceImpl;
 use App\Service\Impl\SessionServiceImpl;
 use App\Http\Controllers\Controller;
+use App\Service\SessionService;
+use App\Service\ReviewKPService;
 
 class ReviewKPController extends Controller
 {
