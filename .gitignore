@@ -4,8 +4,8 @@
 /public/file_pengajuan
 /public/file_siswa
 /public/file
-/storage/*.key
-/storage
+# /storage/*.key
+# /storage
 /vendor
 /.idea
 /.vagrant
