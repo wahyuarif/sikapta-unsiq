@@ -51,21 +51,21 @@
                         <div class="font-weight-bold">Judul</div>
                         {{ $pengajuanKp->judul }}
                     </div>
-                    <span class="badge bg-primary rounded-pill">14</span>
+                    <span class="badge bg-primary rounded-pill"></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="font-weight-bold">ID Pengajuan</div>
                         {{ $pengajuanKp->id }}
                     </div>
-                    <span class="badge bg-primary rounded-pill">14</span>
+                    <span class="badge bg-primary rounded-pill"></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="font-weight-bold">Tanggal Pengajuan</div>
                         {{ $pengajuanKp->created_at }}
                     </div>
-                    <span class="badge bg-primary rounded-pill">14</span>
+                    <span class="badge bg-primary rounded-pill"></span>
                 </li>
                 @isset($pengajuanKp->dosen->nama)
                 <li class="list-group-item d-flex justify-content-between align-items-start">
